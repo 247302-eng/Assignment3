@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certo Software - Mobile Privacy & Security</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --certo-dark-blue: #02033b;
+            --certo-blue: #4335DE;
+            --certo-yellow: #FFC043;
+            --certo-light-blue: #f3f7ff;
+            --text-body: #444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--certo-dark-blue); overflow-x: hidden; background: #fff; }
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ═══════ EXACT BUTTONS ═══════ */
+        .btn-pill {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 16px 32px; border-radius: 50px; font-size: 1rem; font-weight: 800;
+            cursor: pointer; transition: all 0.2s ease; border: 3px solid var(--certo-dark-blue);
+            background: transparent; color: var(--certo-dark-blue); font-family: 'Inter', sans-serif;
+        }
+        .btn-pill:hover { transform: translateY(-3px); }
+        .btn-yellow { background: var(--certo-yellow); }
+        .btn-yellow:hover { box-shadow: 0 10px 25px rgba(255, 192, 67, 0.4); }
+        .btn-outline-dark:hover { background: var(--certo-dark-blue); color: #fff; }
+        .btn-white-solid { background: #fff; color: var(--certo-blue); border-color: #fff; }
+        .btn-white-solid:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .btn-white-ghost { background: transparent; color: #fff; border-color: #fff; }
+        .btn-white-ghost:hover { background: #fff; color: var(--certo-blue); }
+        .btn-orange-solid { background: var(--certo-yellow); color: var(--certo-dark-blue); border-color: var(--certo-dark-blue); }
+        .btn-dark-solid { background: var(--certo-dark-blue); color: #fff; border-color: var(--certo-dark-blue); }
+        .btn-dark-solid:hover { background: transparent; color: var(--certo-dark-blue); }
+
+        /* ═══════ 1. NAVBAR ═══════ */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; background: var(--certo-dark-blue);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; }
+        
+        /* ADDED: Styling for your actual logo.png */
+        .nav-logo-img { height: 32px; width: auto; }
+
+        .nav-center { display: flex; align-items: center; gap: 40px; }
+        .nav-link { font-size: 0.95rem; font-weight: 600; color: rgba(255, 255, 255, 0.8); transition: color 0.2s; }
+        .nav-link:hover { color: #fff; }
+        .btn-signin {
+            background: #fff; color: var(--certo-dark-blue); border: none;
+            padding: 10px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-signin:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
+
+        /* ═══════ 2. HERO ═══════ */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 76px); overflow: hidden; }
+        .hero-left { display: flex; align-items: center; padding: 0 80px; background: #fff; position: relative; z-index: 2; }
+        .hero-content h1 { font-size: 3.4rem; font-weight: 900; line-height: 1.1; color: var(--certo-dark-blue); margin-bottom: 24px; }
+        .hero-content p { font-size: 1.15rem; color: var(--text-body); line-height: 1.7; margin-bottom: 40px; }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        
+        .hero-right { position: relative; overflow: hidden; }
+        .hero-blue-frame { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--certo-blue); z-index: 1; }
+        .hero-bg-image {
+            position: absolute; top: 24px; left: 24px; right: 0; bottom: 0;
+            border-radius: 30px 0 0 0; z-index: 2; overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=1200&auto=format&fit=crop') center/cover;
+        }
+        .hero-phone {
+            position: absolute; top: 50%; left: -10%; transform: translateY(-50%);
+            width: 260px; height: 500px; z-index: 10;
+        }
+        .phone-body {
+            width: 100%; height: 100%; background: #111; border-radius: 40px;
+            border: 6px solid #222; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            overflow: hidden; position: relative;
+        }
+        .phone-notch {
+            position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 28px; background: #111; border-radius: 20px; z-index: 20;
+        }
+        .phone-screen {
+            width: 100%; height: 100%; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            padding: 50px 20px 20px; display: flex; flex-direction: column; align-items: center;
+        }
+        .screen-header { text-align: center; margin-bottom: 30px; }
+        .screen-header h3 { color: #fff; font-size: 1rem; font-weight: 700; }
+        .screen-header span { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
+        .scan-circle {
+            width: 160px; height: 160px; border: 3px solid rgba(67, 53, 222, 0.3);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 30px; position: relative;
+        }
+        .scan-inner { width: 120px; height: 120px; border: 3px solid var(--certo-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(67, 53, 222, 0.1); }
+        .scan-check { font-size: 2.5rem; color: #fff; }
+        .scan-line {
+            position: absolute; top: 20px; left: 20px; right: 20px; height: 4px;
+            background: rgba(67, 53, 222, 0.8); border-radius: 2px;
+            animation: scan 2s infinite linear; box-shadow: 0 0 10px var(--certo-blue);
+        }
+        @keyframes scan { 0% { top: 20px; } 50% { top: 130px; } 100% { top: 20px; } }
+        .screen-status h4 { color: #4CAF50; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .screen-status p { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .screen-nav { display: flex; justify-content: space-around; width: 100%; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0.4; color: #fff; font-size: 0.65rem; }
+        .nav-item.active { opacity: 1; color: var(--certo-blue); }
+
+        /* ═══════ 3. REVIEWS ═══════ */
+        .reviews-section { background: var(--certo-yellow); padding: 80px 0; overflow: hidden; }
+        .reviews-heading { font-size: 2.8rem; font-weight: 800; margin-bottom: 50px; line-height: 1.2; }
+        .cards-scroll { display: flex; gap: 30px; overflow-x: auto; padding-bottom: 10px; }
+        .cards-scroll::-webkit-scrollbar { height: 6px; }
+        .cards-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+        .review-card { min-width: 380px; background: #fff; padding: 40px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); flex-shrink: 0; }
+        .stars { color: #FFC043; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px; }
+        .review-text { color: var(--text-body); line-height: 1.7; margin-bottom: 25px; font-size: 1.05rem; }
+        .reviewer { font-weight: 800; font-size: 0.9rem; color: var(--certo-dark-blue); }
+        
+        .logos-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); 
+            flex-wrap: wrap; gap: 40px; 
+        }
+        .featured-text { font-weight: 800; font-size: 1rem; white-space: nowrap; color: var(--certo-dark-blue); }
+        
+        /* ADDED: Styling for your actual partner logos */
+        .partner-logo {
+            height: 30px; 
+            width: auto; 
+            object-fit: contain; 
+            opacity: 0.8; 
+            transition: opacity 0.2s;
+            filter: grayscale(100%); /* Makes logos look uniform if they have different colors */
+        }
+        .partner-logo:hover { opacity: 1; filter: grayscale(0%); }
+        
+        .logo-placeholder { font-weight: 800; color: rgba(2, 3, 59, 0.2); font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* ═══════ 4. MISSION ═══════ */
+        .mission-section { padding: 100px 0; background: #fff; }
+        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .mission-text h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 24px; }
+        .mission-text p { color: var(--text-body); line-height: 1.8; margin-bottom: 40px; }
+        .mission-photo-wrap { position: relative; width: 100%; height: 500px; }
+        .mission-photo {
+            width: 90%; height: 100%; border-radius: 10px; object-fit: cover;
+            background: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=800&auto=format&fit=crop') center/cover;
+            position: relative; z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        .mission-yellow-bg { position: absolute; top: 24px; left: 24px; width: 90%; height: 100%; background: var(--certo-yellow); border-radius: 10px; z-index: 1; }
+
+        /* ═══════ 5. FEATURES ═══════ */
+        .features-section { background: var(--certo-light-blue); padding: 100px 0; }
+        .features-content { text-align: center; }
+        .features-content h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 60px; line-height: 1.2; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
+        .feature-card {
+            background: #fff; padding: 40px; border-radius: 20px; text-align: left;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.03);
+            display: flex; flex-direction: column; transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .feature-icon { font-size: 2rem; margin-bottom: 20px; }
+        .feature-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-body); line-height: 1.6; font-size: 0.95rem; flex-grow: 1; }
+        .features-btns { display: flex; justify-content: center; gap: 16px; }
+
+        /* ═══════ 6. INFO CARDS ═══════ */
+        .info-section { padding: 80px 0; background: #fff; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .info-card-yellow { background: var(--certo-yellow); padding: 60px; border-radius: 20px; }
+        .info-card-white { background: #f8f9fa; padding: 60px; border-radius: 20px; border: 1px solid #eee; }
+        .info-card-yellow h3, .info-card-white h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; }
+        .info-card-yellow p, .info-card-white p { color: var(--certo-dark-blue); margin-bottom: 30px; line-height: 1.7; opacity: 0.8; }
+
+        /* ═══════ 7. CTA ═══════ */
+        .cta-section { background: linear-gradient(to right, #4b5df7, #2b38b1); padding: 100px 0; text-align: center; color: #fff; }
+        .cta-section h2 { font-size: 3rem; font-weight: 800; margin-bottom: 40px; }
+        .cta-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+        /* ═══════ 8. INSIGHTS ═══════ */
+        .insights-section { padding: 80px 0 100px; background: #fff; }
+        .insights-header { margin-bottom: 40px; }
+        .insights-header h2 { font-size: 2rem; font-weight: 800; }
+        .insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .insight-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s; display: flex; flex-direction: column; }
+        .insight-card:hover { transform: translateY(-5px); }
+        .insight-img { width: 100%; height: 200px; object-fit: cover; }
+        .insight-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .insight-tag { font-size: 0.75rem; font-weight: 700; color: var(--certo-blue); text-transform: uppercase; margin-bottom: 10px; }
+        .insight-content h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; line-height: 1.4; }
+        .insight-content p { font-size: 0.9rem; color: var(--text-body); line-height: 1.5; flex-grow: 1; }
+        .view-all-wrap { text-align: center; margin-top: 50px; }
+
+        /* ═══════ 9. FOOTER ═══════ */
+        .site-footer { background: var(--certo-dark-blue); color: #fff; padding: 80px 0 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer-left h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 25px; line-height: 1.3; letter-spacing: 1px; }
+        .footer-socials { display: flex; gap: 15px; margin-bottom: 30px; }
+        .social-icon {
+            width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+            font-weight: 700; color: #fff; transition: background 0.2s; cursor: pointer;
+        }
+        .social-icon:hover { background: var(--certo-blue); }
+        .footer-copy { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+        
+        /* FOOTER LOGO FIX */
+        .footer-logo-img { height: 28px; width: auto; filter: brightness(0) invert(1); margin-bottom: 25px; }
+        
+        .footer-nav-links { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .footer-nav-links a { color: rgba(255,255,255,0.6); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .footer-nav-links a:hover { color: #fff; }
+        .footer-newsletter h4 { font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
+        .newsletter-form {
+            display: flex; background: rgba(255,255,255,0.1); border-radius: 50px;
+            overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .newsletter-form input {
+            flex-grow: 1; background: transparent; border: none; padding: 14px 20px;
+            color: #fff; font-size: 0.9rem; outline: none; font-family: 'Inter', sans-serif;
+        }
+        .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+        .newsletter-form button {
+            background: var(--certo-yellow); color: var(--certo-dark-blue); border: none;
+            padding: 14px 25px; font-weight: 800; cursor: pointer; font-family: 'Inter', sans-serif;
+            transition: background 0.2s;
+        }
+        .newsletter-form button:hover { background: #ffca5e; }
+        .footer-bottom-legal { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; }
+        .footer-legal-text { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.6; }
+
+        /* ═══════ RESPONSIVE ═══════ */
+        @media (max-width: 1024px) {
+            .navbar { padding: 15px 0; }
+            .nav-center { display: none; }
+            .hero { grid-template-columns: 1fr; }
+            .hero-left { padding: 60px 24px; text-align: center; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-btns, .features-btns, .cta-btns { justify-content: center; }
+            .hero-right { height: 500px; }
+            .hero-phone { left: 50%; transform: translate(-50%, -50%); width: 220px; height: 420px; }
+            .mission-grid, .info-grid { grid-template-columns: 1fr; }
+            .mission-photo-wrap { height: 350px; }
+            .features-grid, .insights-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .footer-socials { justify-content: center; }
+            .footer-center { display: flex; flex-direction: column; align-items: center; }
+            .footer-logo-img { margin-left: auto; margin-right: auto; }
+        }
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero-right { height: 400px; }
+            .hero-phone { width: 180px; height: 340px; }
+            .features-grid, .insights-grid { grid-template-columns: 1fr; }
+            .review-card { min-width: 300px; }
+            .partner-logo { height: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <!-- ADDED: Your actual Certo logo.png -->
+                <img src="assets/images/logo.png" alt="Certo Logo" class="nav-logo-img">
+            </a>
+            <div class="nav-center">
+                <a href="#" class="nav-link">iPhone</a>
+                <a href="#" class="nav-link">Android</a>
+                <a href="#" class="nav-link">Help</a>
+            </div>
+            <button class="btn-signin">Sign in</button>
+        </div>
+    </nav>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <h1>Your mobile privacy is our mission</h1>
+                <p>Think your phone has been hacked? Our trusted apps make it easy for you to scan, detect and remove threats.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn-pill btn-yellow">Get Certo for iPhone →</a>
+                    <a href="#" class="btn-pill btn-outline-dark">Get Certo for Android</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-blue-frame"></div>
+            <div class="hero-bg-image"></div>
+            <div class="hero-phone">
+                <div class="phone-body">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <h3>Certo Security</h3>
+                            <span>iOS 17.2 • iPhone 15</span>
+                        </div>
+                        <div class="scan-circle">
+                            <div class="scan-line"></div>
+                            <div class="scan-inner"><span class="scan-check">✓</span></div>
+                        </div>
+                        <div class="screen-status">
+                            <h4>Device Secure</h4>
+                            <p>No threats detected</p>
+                        </div>
+                        <div class="screen-nav">
+                            <div class="nav-item active">Scan</div>
+                            <div class="nav-item">Protect</div>
+                            <div class="nav-item">Settings</div>
+                            <div class="nav-item">Account</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ REVIEWS ═══════════ -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="reviews-heading">Trusted by thousands<br>of users</h2>
+            <div class="cards-scroll">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"This app gave me peace of mind. I was so worried someone was tracking me, but Certo proved my phone was completely clean."</p>
+                    <div class="reviewer">Sarah J.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Incredibly easy to use. It found a hidden spyware app that I couldn't see anywhere else on my iPhone."</p>
+                    <div class="reviewer">Mike T.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Fast, professional, and worth every penny. I use it monthly just to make sure my phone is safe."</p>
+                    <div class="reviewer">David L.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Highly recommend to anyone who thinks their partner might be spying on them. It finds everything."</p>
+                    <div class="reviewer">Emily R.</div>
+                </div>
+            </div>
+            
+            <!-- ADDED: Your actual partner logos -->
+            <div class="logos-row">
+                <span class="featured-text">Featured in:</span>
+                <img src="assets/images/wired-blue-2.svg.png" alt="Wired" class="partner-logo">
+                <img src="assets/images/new-york-post-blue-2.svg.png" alt="New York Post" class="partner-logo">
+                <img src="assets/images/zd-net-blue-2.svg.png" alt="ZDNet" class="partner-logo">
+                <!-- Left these as placeholders in case you get the actual files for them later -->
+                <span class="logo-placeholder">TechRadar</span>
+                <span class="logo-placeholder">Forbes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ MISSION ═══════════ -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-text">
+                    <h2>Mobile security is at the core of everything we do</h2>
+                    <p>We believe everyone has the right to digital privacy. Our team of security experts work tirelessly to ensure your devices are protected against the latest threats.</p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn-pill btn-yellow">Get Certo for iPhone →</a>
+                        <a href="#" class="btn-pill btn-outline-dark">Get Certo for Android</a>
+                    </div>
+                </div>
+                <div class="mission-photo-wrap">
+                    <div class="mission-yellow-bg"></div>
+                    <div class="mission-photo"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FEATURES ═══════════ -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-content">
+                <h2>Get your freedom back, stop mobile spyware today</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Spyware detection</h3>
+                        <p>Deep scans your device to find hidden spyware apps that standard antivirus software misses.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⌨️</div>
+                        <h3>Keylogger detection</h3>
+                        <p>Identifies malicious software that records every keystroke you make, stealing passwords and messages.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🕵️</div>
+                        <h3>Stalkerware removal</h3>
+                        <p>Easily remove apps installed by jealous partners or stalkers to track your location and activity.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🍎</div>
+                        <h3>iPhone security check</h3>
+                        <p>Checks for signs that your iPhone has been jailbroken or compromised by sophisticated attacks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📶</div>
+                        <h3>Secure browsing</h3>
+                        <p>Ensure your internet connection is safe from eavesdropping and man-in-the-middle attacks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Data breach check</h3>
+                        <p>Find out if your personal data has been leaked in known data breaches so you can take action.</p>
+                    </div>
+                </div>
+                <div class="features-btns">
+                    <a href="#" class="btn-pill btn-yellow">Get Certo for iPhone →</a>
+                    <a href="#" class="btn-pill btn-outline-dark">Get Certo for Android</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ INFO CARDS ═══════════ -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card-yellow">
+                    <h3>Read our story</h3>
+                    <p>Learn why we built Certo and how we help protect people's digital lives every day.</p>
+                    <a href="#" class="btn-pill btn-dark-solid">About us</a>
+                </div>
+                <div class="info-card-white">
+                    <h3>Help Center</h3>
+                    <p>Need help using Certo? Our dedicated support team is ready to assist you.</p>
+                    <a href="#" class="btn-pill btn-dark-solid">Visit help center</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CTA ═══════════ -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Is someone spying on your phone?</h2>
+            <div class="cta-btns">
+                <a href="#" class="btn-pill btn-white-solid">Get Certo for iPhone</a>
+                <a href="#" class="btn-pill btn-white-ghost">Get Certo for Android</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ INSIGHTS ═══════════ -->
+    <section class="insights-section">
+        <div class="container">
+            <div class="insights-header">
+                <h2>Latest insights</h2>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-img" style="background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop') center/cover;"></div>
+                    <div class="insight-content">
+                        <span class="insight-tag">Privacy</span>
+                        <h3>Signs Your Ex Is Spying On You</h3>
+                        <p>Discover the hidden clues that someone might be monitoring your phone without your permission.</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-img" style="background: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop') center/cover;"></div>
+                    <div class="insight-content">
+                        <span class="insight-tag">Android</span>
+                        <h3>How to Remove a Hacker from Your Samsung Phone</h3>
+                        <p>A step-by-step guide to securing your Samsung device and kicking hackers out for good.</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-img" style="background: url('https://images.unsplash.com/photo-1580910051074-3eb694886571?q=80&w=800&auto=format&fit=crop') center/cover;"></div>
+                    <div class="insight-content">
+                        <span class="insight-tag">Security</span>
+                        <h3>Is Your Cell Phone Under Surveillance?</h3>
+                        <p>Learn how to tell if your phone is tapped, tracked, or monitored by spyware.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-wrap">
+                <a href="#" class="btn-pill btn-orange-solid">View all insights →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-left">
+                    <h3>Scan. Detect.<br>Remove.</h3>
+                    <div class="footer-socials">
+                        <div class="social-icon">f</div>
+                        <div class="social-icon">X</div>
+                        <div class="social-icon">in</div>
+                    </div>
+                    <p class="footer-copy">Copyright © 2022 Certo Software Limited.<br>Registered in England & Wales No. 10072356</p>
+                </div>
+                
+                <div class="footer-center">
+                    <!-- ADDED: Your actual Certo logo.png (turned white for footer) -->
+                    <img src="assets/images/logo.png" alt="Certo Logo" class="footer-logo-img">
+                    <ul class="footer-nav-links">
+                        <li><a href="#">iPhone</a></li>
+                        <li><a href="#">Android</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">About us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Sign up to our newsletter</h4>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom-legal">
+                <p class="footer-legal-text">Apple, the Apple logo, and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Android, Google Play and the Google Play logo are trademarks of Google LLC.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
