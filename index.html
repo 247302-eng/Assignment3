@@ -8,6 +8,7 @@
         :root {
             --primary-blue: #02033b;
             --certo-orange: #ffb84d;
+            --certo-yellow: #ffc107;
             --white: #ffffff;
             --accent-blue: #4a3aff;
             --light-gray: #f4f4f9;
@@ -19,122 +20,69 @@
             font-family: 'Helvetica Neue', Arial, sans-serif;
             color: var(--primary-blue);
             line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- Header --- */
-        .main-header { 
-            padding: 15px 0; 
-            background-color: var(--white);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
+        /* --- NAVIGATION --- */
+        .main-header { padding: 20px 0; background-color: var(--white); border-bottom: 1px solid #eee; }
         .header-flex { display: flex; justify-content: space-between; align-items: center; }
         .logo { height: 35px; }
-        
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--primary-blue); 
-            font-weight: 700; 
-            font-size: 15px;
-        }
-        
-        /* Dropdown arrow for Company */
-        .dropdown::after {
-            content: ' \2304';
-            font-size: 14px;
-            vertical-align: middle;
-        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); margin-left: 30px; font-weight: 600; font-size: 15px; }
+        .btn-sign-in { background: var(--accent-blue); color: var(--white) !important; padding: 10px 25px; border-radius: 25px; margin-left: 30px; }
 
-        .btn-signin { 
-            background: var(--accent-blue); 
-            color: var(--white) !important; 
-            padding: 10px 25px; 
-            border-radius: 25px; 
-        }
-
-        /* --- Hero Section --- */
+        /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
             padding: 80px 0;
-            overflow: visible;
         }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 35px; max-width: 500px; color: #444; }
-        
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+        .hero-content h1 { font-size: 4.2rem; line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
+        .hero-content p { font-size: 1.25rem; margin-bottom: 40px; max-width: 520px; opacity: 0.9; }
         .hero-btns { display: flex; gap: 20px; }
-        .btn-orange { 
-            background: var(--certo-orange); 
-            color: var(--primary-blue); 
-            padding: 18px 35px; 
-            border-radius: 40px; 
-            text-decoration: none; 
-            font-weight: bold; 
-        }
-        .btn-outline-dark { 
-            border: 2px solid var(--primary-blue); 
-            color: var(--primary-blue); 
-            padding: 18px 35px; 
-            border-radius: 40px; 
-            text-decoration: none; 
-            font-weight: bold; 
-        }
+        .btn-orange { background: var(--certo-orange); color: var(--primary-blue); padding: 18px 35px; border-radius: 40px; text-decoration: none; font-weight: bold; display: flex; align-items: center; }
+        .btn-outline-dark { border: 2px solid var(--primary-blue); color: var(--primary-blue); padding: 18px 35px; border-radius: 40px; text-decoration: none; font-weight: bold; }
 
-        /* --- Image Positioning --- */
-        .hero-visual {
-            position: relative;
-            border-left: 15px solid var(--accent-blue);
-            padding: 0;
-            line-height: 0;
-            display: flex;
-            align-items: center;
-        }
+        .hero-visual { position: relative; border-left: 15px solid var(--accent-blue); line-height: 0; }
+        .hero-bg { width: 100%; display: block; }
+        .hero-phone { position: absolute; width: 230px; top: 50%; left: 30px; transform: translateY(-50%); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); z-index: 10; }
 
-        .hero-bg {
-            width: 100%;
-            display: block;
-        }
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials-section { background-color: var(--certo-yellow); padding: 100px 0; }
+        .testimonials-header h2 { font-size: 2.5rem; max-width: 500px; line-height: 1.2; margin-bottom: 60px; font-weight: 800; }
+        
+        .cards-container { display: flex; gap: 25px; overflow-x: auto; padding-bottom: 60px; scrollbar-width: none; }
+        .cards-container::-webkit-scrollbar { display: none; }
+        
+        .review-card { background: var(--white); min-width: 350px; padding: 40px; border-radius: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .stars { color: #ff8a00; font-size: 20px; margin-bottom: 20px; }
+        .review-text { font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
+        .reviewer-name { font-weight: bold; }
 
-        .hero-phone {
-            position: absolute;
-            width: 240px; 
-            left: 40px; 
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
-            z-index: 10;
-        }
+        /* --- FEATURED LOGOS --- */
+        .featured-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 50px; border-top: 1px solid rgba(2, 3, 59, 0.1); padding-top: 50px; }
+        .featured-text { font-weight: bold; font-size: 18px; }
+        .logo-row { display: flex; align-items: center; gap: 40px; }
+        .logo-row img { max-height: 35px; filter: brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(5437%) hue-rotate(231deg) brightness(91%) contrast(106%); }
 
-        /* --- Press & Features --- */
-        .press { background: var(--light-gray); padding: 50px 0; text-align: center; }
-        .press-grid { display: flex; justify-content: space-around; padding-top: 20px; }
-        .press-grid img { max-height: 25px; opacity: 0.6; }
-
-        .features { padding: 100px 0; text-align: center; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
-        .feature-card { padding: 40px; border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
-        .feature-card img { width: 60px; margin-bottom: 20px; }
-
-        .footer-image-wrap img { width: 100%; display: block; }
-
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-btns { justify-content: center; flex-direction: column; }
-            .hero-phone { position: relative; width: 180px; left: 0; transform: none; margin: -50px auto 0; }
-            .hero-visual { border-left: none; border-top: 15px solid var(--accent-blue); margin-top: 40px; }
-            .nav-links a:not(.btn-signin) { display: none; }
+            .hero-btns { justify-content: center; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-phone { position: relative; width: 200px; left: 0; transform: none; margin: -60px auto 20px; }
+            .hero-visual { border-left: none; border-top: 15px solid var(--accent-blue); }
+            .featured-bar { flex-direction: column; gap: 30px; }
+            .logo-row { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header class="main-header">
         <div class="container header-flex">
             <img src="Assets/images/logo.png" alt="Certo Logo" class="logo">
@@ -142,12 +90,13 @@
                 <a href="#">iPhone</a>
                 <a href="#">Android</a>
                 <a href="#">Help</a>
-                <a href="#" class="dropdown">Company</a>
-                <a href="#" class="btn-signin">Sign in</a>
+                <a href="#">Company ▾</a>
+                <a href="#" class="btn-sign-in">Sign in</a>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
@@ -159,50 +108,53 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="Assets/images/home-header-2.png (2).png" alt="Background" class="hero-bg">
-                <img src="Assets/images/android-dashboard-certo-2.png.png" alt="Certo Dashboard" class="hero-phone">
+                <img src="Assets/images/home-header-2.png (2).png" alt="Subway background" class="hero-bg">
+                <img src="Assets/images/android-dashboard-certo-2.png.png" alt="Certo App Dashboard" class="hero-phone">
             </div>
         </div>
     </section>
 
-    <section class="press">
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
         <div class="container">
-            <p>As Featured In</p>
-            <div class="press-grid">
-                <img src="Assets/images/new-york-post-blue-2.svg.png" alt="NY Post">
-                <img src="Assets/images/readers-digest-blue-2.svg.png" alt="Readers Digest">
-                <img src="Assets/images/wired-blue-2.svg.png" alt="Wired">
-                <img src="Assets/images/zd-net-blue-2.svg.png" alt="ZD Net">
+            <div class="testimonials-header">
+                <h2>Loved by thousands of iPhone and Android users alike</h2>
+            </div>
+
+            <div class="cards-container">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Does exactly what it says. Clear to read and understand. This is now the second iPhone we've used it on and would certainly recommend this app.</p>
+                    <p class="reviewer-name">colinandmandy94</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Love the ease and efficiency. Awesome app. Very informative and insightful if wanting to know more about your device. The added breach check is a great bonus.</p>
+                    <p class="reviewer-name">Jennifer Black</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">This app is good if you need to identify certain vulnerabilities on your iPhone. If you have any issues, their customer service was quite helpful and responsive.</p>
+                    <p class="reviewer-name">Phillip Colligan</p>
+                </div>
+            </div>
+
+            <!-- Featured Bar -->
+            <div class="featured-bar">
+                <span class="featured-text">Featured in:</span>
+                <div class="logo-row">
+                    <img src="Assets/images/cnbc-blue-2.svg.png" alt="CNBC">
+                    <img src="Assets/images/new-york-post-blue-2.svg.png" alt="New York Post">
+                    <img src="Assets/images/financial-times-blue-2.svg.png" alt="Financial Times">
+                    <img src="Assets/images/readers-digest-blue-2.svg.png" alt="Readers Digest">
+                    <img src="Assets/images/zd-net-blue-2.svg.png" alt="ZDNet">
+                    <img src="Assets/images/wired-blue-2.svg.png" alt="Wired">
+                </div>
             </div>
         </div>
     </section>
-
-    <section class="features">
-        <div class="container">
-            <h2>Stop mobile spyware today</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="Assets/images/spyware-detection-loading.png.png" alt="Spyware">
-                    <h3>Spyware Detector</h3>
-                    <p>Our industry-leading scan finds malicious apps designed to spy on you.</p>
-                </div>
-                <div class="feature-card">
-                    <img src="Assets/images/keylogger-detection-loading.png.png" alt="Keylogger">
-                    <h3>Keylogger Detection</h3>
-                    <p>Find hidden software that records everything you type.</p>
-                </div>
-                <div class="feature-card">
-                    <img src="Assets/images/find-tracking-apps-loading.png.png" alt="Tracking">
-                    <h3>Find Tracking Apps</h3>
-                    <p>Identify apps that have permission to track your location.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="footer-image-wrap">
-        <img src="Assets/images/footer.png" alt="Footer">
-    </div>
 
 </body>
 </html>
