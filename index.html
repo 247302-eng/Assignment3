@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certo - Mobile Security & Privacy</title>
     <style>
-        /* CSS STYLES */
         :root {
             --primary-blue: #02033b;
             --certo-yellow: #ffc107;
@@ -14,214 +13,59 @@
             --white: #ffffff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             color: var(--primary-blue);
             line-height: 1.6;
-            background-color: var(--white);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Header Navigation */
-        .main-header {
-            padding: 20px 0;
-            background-color: var(--white);
-        }
+        /* Header */
+        .main-header { padding: 20px 0; background: var(--white); }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 35px; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); margin-left: 30px; font-weight: 600; }
+        .btn-primary { background: var(--primary-blue); color: var(--white) !important; padding: 10px 25px; border-radius: 25px; }
 
-        .header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Hero */
+        .hero { background-color: var(--primary-blue); color: var(--white); padding: 80px 0; overflow: hidden; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .btn-orange { background: var(--certo-orange); color: var(--white); padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; }
+        .btn-outline { border: 2px solid var(--white); color: var(--white); padding: 15px 30px; border-radius: 30px; text-decoration: none; }
+        
+        .hero-visual { position: relative; }
+        .hero-bg { width: 100%; border-radius: 20px; }
 
-        .logo { 
-            height: 35px; 
-        }
+        /* Press */
+        .press { background: var(--light-gray); padding: 40px 0; text-align: center; }
+        .press-grid { display: flex; justify-content: space-around; align-items: center; margin-top: 20px; }
+        .press-grid img { max-height: 30px; opacity: 0.7; }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary-blue);
-            margin-left: 30px;
-            font-weight: 600;
-            font-size: 15px;
-        }
+        /* Features */
+        .features { padding: 80px 0; text-align: center; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .feature-card { padding: 40px; border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .feature-card img { width: 60px; margin-bottom: 20px; }
 
-        .btn-primary {
-            background: var(--primary-blue);
-            color: var(--white) !important;
-            padding: 10px 25px;
-            border-radius: 25px;
-        }
+        /* Footer */
+        .footer-image-wrap img { width: 100%; display: block; }
 
-        /* Hero Section */
-        .hero {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            opacity: 0.9;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-orange {
-            background: var(--certo-orange);
-            color: var(--white);
-            padding: 18px 35px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .btn-outline {
-            border: 2px solid var(--white);
-            color: var(--white);
-            padding: 18px 35px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .hero-visual {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-bg {
-            width: 100%;
-            border-radius: 30px;
-            filter: brightness(0.85) contrast(1.1);
-        }
-
-        .hero-phone {
-            position: absolute;
-            width: 240px;
-            bottom: -30px;
-            right: -20px;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
-        }
-
-        /* Press Section */
-        .press {
-            background: var(--light-gray);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .press p {
-            font-weight: bold;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-        }
-
-        .press-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            opacity: 0.6;
-        }
-
-        .press-grid img {
-            max-height: 35px;
-            max-width: 150px;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        .features h2 {
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .feature-card {
-            padding: 50px 30px;
-            border-radius: 25px;
-            background: var(--white);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.06);
-        }
-
-        .feature-card img {
-            width: 70px;
-            margin-bottom: 25px;
-        }
-
-        /* Footer Image Wrap */
-        .footer-image-wrap {
-            width: 100%;
-            background-color: var(--primary-blue);
-        }
-
-        .footer-image-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Responsive Design */
         @media (max-width: 992px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-btns { justify-content: center; }
-            .hero-content h1 { font-size: 3rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .hero-phone { position: relative; width: 200px; right: 0; bottom: 0; margin-top: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header class="main-header">
         <div class="container header-flex">
-            <!-- Updated Path -->
-            <img src="images/logo_3.png" alt="Certo Logo" class="logo">
+            <img src="Assets/images/logo.png" alt="Certo Logo" class="logo">
             <nav class="nav-links">
                 <a href="#">iPhone</a>
                 <a href="#">Android</a>
@@ -232,71 +76,59 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
                 <h1>Your mobile privacy is our mission</h1>
-                <p>Think your phone has been hacked? Find out instantly with Certo. The industry-leading mobile security for iPhone and Android devices.</p>
+                <p>Is your phone been hacked? Find out instantly with Certo.</p>
                 <div class="hero-btns">
                     <a href="#" class="btn-orange">Get Certo for iPhone</a>
                     <a href="#" class="btn-outline">Get Certo for Android</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <!-- Updated Path -->
-                <img src="images/home-header-2.png (2).jpg" alt="Privacy protection" class="hero-bg">
-                <!-- Updated Path -->
-                <img src="images/android-dashboard-certo-2.png.png" alt="Certo Dashboard" class="hero-phone">
+                <img src="Assets/images/home-header-2.png (2).png" alt="Privacy protection" class="hero-bg">
             </div>
         </div>
     </section>
 
-    <!-- Press Trust Section -->
     <section class="press">
         <div class="container">
-            <p>As Featured In</p>
+            <p>Featured In</p>
             <div class="press-grid">
-                <!-- Updated Paths -->
-                <img src="images/cnbc-blue-2.svg.png" alt="CNBC">
-                <img src="images/financial-times-blue-2.svg.png" alt="Financial Times">
-                <img src="images/readers-digest-blue-2.svg_2.png" alt="Reader's Digest">
-                <img src="images/new-york-post-blue-2.svg_2.png" alt="New York Post">
+                <img src="Assets/images/new-york-post-blue-2.svg.png" alt="NY Post">
+                <img src="Assets/images/readers-digest-blue-2.svg.png" alt="Reader's Digest">
+                <img src="Assets/images/wired-blue-2.svg.png" alt="Wired">
+                <img src="Assets/images/zd-net-blue-2.svg.png" alt="ZDNet">
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <h2>Get your freedom back, stop mobile spyware today</h2>
+            <h2>Stop mobile spyware today</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <!-- Updated Path -->
-                    <img src="images/os-integrity-check-loading.png_2.png" alt="Spyware Detector">
+                    <img src="Assets/images/spyware-detection-loading.png.png" alt="Spyware">
                     <h3>Spyware Detector</h3>
-                    <p>Our industry-leading scan finds malicious apps designed to spy on you.</p>
+                    <p>Find malicious apps designed to spy on you.</p>
                 </div>
                 <div class="feature-card">
-                    <!-- Updated Path -->
-                    <img src="images/keylogger-detection-loading.png_2.png" alt="Keylogger Detection">
+                    <img src="Assets/images/keylogger-detection-loading.png.png" alt="Keylogger">
                     <h3>Keylogger Detection</h3>
-                    <p>Find hidden software that records everything you type.</p>
+                    <p>Find software that records what you type.</p>
                 </div>
                 <div class="feature-card">
-                    <!-- Updated Path -->
-                    <img src="images/find-tracking-apps-loading.png.png" alt="Tracking Detection">
+                    <img src="Assets/images/find-tracking-apps-loading.png.png" alt="Tracking">
                     <h3>Find Tracking Apps</h3>
-                    <p>Identify apps that have permission to track your location.</p>
+                    <p>Identify apps tracking your location.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Image Section -->
     <div class="footer-image-wrap">
-        <!-- Updated Path -->
-        <img src="images/footer.png" alt="Footer Navigation">
+        <img src="Assets/images/footer.png" alt="Footer">
     </div>
 
 </body>
