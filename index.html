@@ -11,13 +11,13 @@
             --certo-yellow: #ffc107;
             --white: #ffffff;
             --accent-blue: #4a3aff;
-            --light-gray: #f4f4f9;
+            --star-gold: #ffb400;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: var(--primary-blue);
             line-height: 1.6;
             background-color: var(--white);
@@ -27,62 +27,75 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* --- NAVIGATION --- */
-        .main-header { padding: 20px 0; background-color: var(--white); border-bottom: 1px solid #eee; }
+        .main-header { padding: 25px 0; background-color: var(--white); }
         .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo { height: 35px; }
+        .logo { height: 38px; }
         .nav-links { display: flex; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--primary-blue); margin-left: 30px; font-weight: 600; font-size: 15px; }
-        .btn-sign-in { background: var(--accent-blue); color: var(--white) !important; padding: 10px 25px; border-radius: 25px; margin-left: 30px; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); margin-left: 35px; font-weight: 700; font-size: 16px; }
+        .btn-sign-in { background: var(--accent-blue); color: var(--white) !important; padding: 12px 28px; border-radius: 30px; }
 
         /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
-            padding: 80px 0;
+            padding: 100px 0;
         }
         .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
-        .hero-content h1 { font-size: 4.2rem; line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
-        .hero-content p { font-size: 1.25rem; margin-bottom: 40px; max-width: 520px; opacity: 0.9; }
+        .hero-content h1 { font-size: 4.5rem; line-height: 1.05; margin-bottom: 30px; font-weight: 900; letter-spacing: -1px; }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 45px; max-width: 540px; font-weight: 400; color: #333; }
         .hero-btns { display: flex; gap: 20px; }
-        .btn-orange { background: var(--certo-orange); color: var(--primary-blue); padding: 18px 35px; border-radius: 40px; text-decoration: none; font-weight: bold; display: flex; align-items: center; }
-        .btn-outline-dark { border: 2px solid var(--primary-blue); color: var(--primary-blue); padding: 18px 35px; border-radius: 40px; text-decoration: none; font-weight: bold; }
+        .btn-orange { background: var(--certo-orange); color: var(--primary-blue); padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 18px; }
+        .btn-outline-dark { border: 2.5px solid var(--primary-blue); color: var(--primary-blue); padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 18px; }
 
         .hero-visual { position: relative; border-left: 15px solid var(--accent-blue); line-height: 0; }
         .hero-bg { width: 100%; display: block; }
-        .hero-phone { position: absolute; width: 230px; top: 50%; left: 30px; transform: translateY(-50%); filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); z-index: 10; }
+        .hero-phone { position: absolute; width: 240px; top: 50%; left: 35px; transform: translateY(-50%); filter: drop-shadow(0 25px 50px rgba(0,0,0,0.2)); z-index: 10; }
 
         /* --- TESTIMONIALS SECTION --- */
-        .testimonials-section { background-color: var(--certo-yellow); padding: 100px 0; }
-        .testimonials-header h2 { font-size: 2.5rem; max-width: 500px; line-height: 1.2; margin-bottom: 60px; font-weight: 800; }
+        .testimonials-section { background-color: var(--certo-yellow); padding: 120px 0; position: relative; }
+        .testimonials-header h2 { font-size: 42px; font-weight: 900; line-height: 1.1; margin-bottom: 70px; max-width: 520px; letter-spacing: -0.5px; }
         
-        .cards-container { display: flex; gap: 25px; overflow-x: auto; padding-bottom: 60px; scrollbar-width: none; }
-        .cards-container::-webkit-scrollbar { display: none; }
+        /* The row of cards with the "cut off" look */
+        .cards-overflow-wrapper { margin-right: -200px; }
+        .cards-row { display: flex; gap: 28px; }
         
-        .review-card { background: var(--white); min-width: 350px; padding: 40px; border-radius: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .stars { color: #ff8a00; font-size: 20px; margin-bottom: 20px; }
-        .review-text { font-size: 16px; margin-bottom: 25px; line-height: 1.6; }
-        .reviewer-name { font-weight: bold; }
+        .testimonial-card { 
+            background: var(--white); 
+            flex: 0 0 360px; 
+            padding: 50px 40px; 
+            border-radius: 45px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+            display: flex;
+            flex-direction: column;
+        }
+        .stars { color: var(--star-gold); font-size: 20px; margin-bottom: 25px; letter-spacing: 3px; }
+        .quote-text { font-size: 17px; margin-bottom: 30px; line-height: 1.5; font-weight: 400; color: #111; }
+        .author { font-weight: 900; font-size: 16px; margin-top: auto; }
 
         /* --- FEATURED LOGOS --- */
-        .featured-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 50px; border-top: 1px solid rgba(2, 3, 59, 0.1); padding-top: 50px; }
-        .featured-text { font-weight: bold; font-size: 18px; }
-        .logo-row { display: flex; align-items: center; gap: 40px; }
-        .logo-row img { max-height: 35px; filter: brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(5437%) hue-rotate(231deg) brightness(91%) contrast(106%); }
+        .featured-bar { display: flex; align-items: center; margin-top: 80px; border-top: 1px solid rgba(2, 3, 59, 0.15); padding-top: 60px; }
+        .featured-label { font-weight: 900; font-size: 22px; margin-right: 50px; white-space: nowrap; }
+        .logo-row { display: flex; align-items: center; justify-content: space-between; flex-grow: 1; }
+        .logo-row img { 
+            max-height: 38px; 
+            filter: brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(5437%) hue-rotate(231deg) brightness(91%) contrast(106%); 
+        }
+        .logo-cnbc { max-height: 60px !important; }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-btns { justify-content: center; }
-            .hero-content h1 { font-size: 3rem; }
-            .hero-phone { position: relative; width: 200px; left: 0; transform: none; margin: -60px auto 20px; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-phone { position: relative; width: 220px; left: 0; transform: none; margin: -80px auto 30px; }
             .hero-visual { border-left: none; border-top: 15px solid var(--accent-blue); }
-            .featured-bar { flex-direction: column; gap: 30px; }
-            .logo-row { flex-wrap: wrap; justify-content: center; }
+            .featured-bar { flex-direction: column; gap: 40px; align-items: flex-start; }
+            .logo-row { flex-wrap: wrap; justify-content: center; gap: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header -->
     <header class="main-header">
         <div class="container header-flex">
             <img src="Assets/images/logo.png" alt="Certo Logo" class="logo">
@@ -108,8 +121,8 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="Assets/images/home-header-2.png (2).png" alt="Subway background" class="hero-bg">
-                <img src="Assets/images/android-dashboard-certo-2.png.png" alt="Certo App Dashboard" class="hero-phone">
+                <img src="Assets/images/home-header-2.png (2).png" alt="Background commuter" class="hero-bg">
+                <img src="Assets/images/android-dashboard-certo-2.png.png" alt="Certo Dashboard" class="hero-phone">
             </div>
         </div>
     </section>
@@ -121,31 +134,43 @@
                 <h2>Loved by thousands of iPhone and Android users alike</h2>
             </div>
 
-            <div class="cards-container">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">Does exactly what it says. Clear to read and understand. This is now the second iPhone we've used it on and would certainly recommend this app.</p>
-                    <p class="reviewer-name">colinandmandy94</p>
-                </div>
+            <div class="cards-overflow-wrapper">
+                <div class="cards-row">
+                    <!-- Card 1 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">Does exactly what it says. Clear to read and understand. This is now the second iPhone we've used it on and would certainly recommend this app.</p>
+                        <p class="author">colinandmandy94</p>
+                    </div>
 
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">Love the ease and efficiency. Awesome app. Very informative and insightful if wanting to know more about your device. The added breach check is a great bonus.</p>
-                    <p class="reviewer-name">Jennifer Black</p>
-                </div>
+                    <!-- Card 2 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">Love the ease and efficiency. Awesome app. Very informative and insightful if wanting to know more about your device. The added breach check is a great bonus. Check any email of they've ever been named in a data breach from years ago. Sweet tool. Love it highly recommend.</p>
+                        <p class="author">Jennifer Black</p>
+                    </div>
 
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">This app is good if you need to identify certain vulnerabilities on your iPhone. If you have any issues, their customer service was quite helpful and responsive.</p>
-                    <p class="reviewer-name">Phillip Colligan</p>
+                    <!-- Card 3 -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">This app is good if you need to identify certain vulnerabilities on your iPhone. If you have any issues, their customer service was quite helpful and responsive.</p>
+                        <p class="author">Phillip Colligan</p>
+                    </div>
+
+                    <!-- Extra Card for "Cut-off" Effect -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote-text">I wish that I had found this earlier. It's notch better than other apps I've tried. Highly recommend for security.</p>
+                        <p class="author">Leslie</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Featured Bar -->
             <div class="featured-bar">
-                <span class="featured-text">Featured in:</span>
+                <span class="featured-label">Featured in:</span>
                 <div class="logo-row">
-                    <img src="Assets/images/cnbc-blue-2.svg.png" alt="CNBC">
+                    <img src="Assets/images/cnbc-blue-2.svg.png" alt="CNBC" class="logo-cnbc">
                     <img src="Assets/images/new-york-post-blue-2.svg.png" alt="New York Post">
                     <img src="Assets/images/financial-times-blue-2.svg.png" alt="Financial Times">
                     <img src="Assets/images/readers-digest-blue-2.svg.png" alt="Readers Digest">
